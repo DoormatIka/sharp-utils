@@ -3,7 +3,7 @@ import sharp   from "sharp";
 import fs      from "fs";
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 
 app.post("/convertwebp", express.raw({ type: "*/*" }), async (req, res) => {
     const p = await sharp(req.body)
