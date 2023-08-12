@@ -5,7 +5,7 @@ import fs      from "fs";
 const app = express();
 app.use(express.json({ limit: "20mb" }));
 
-app.post("/convertwebp", express.raw({ type: "*/*" }), async (req, res) => {
+app.post("/convertwebp", express.raw({ type: "*/*", limit: "20mb" }), async (req, res) => {
     const p = await sharp(req.body)
         .png()
         .toBuffer();
